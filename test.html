@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Images</title>
+</head>
+<body>
+    <h1>Uploaded Images</h1>
+    <div id="images-container"></div>
+
+    <script>
+        fetch('http://localhost:5000/images')
+            .then(response => response.json())
+            .then(images => {
+                const container = document.getElementById('images-container');
+                images.forEach(image => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = image;
+                    imgElement.alt = image;
+                    imgElement.style.width = '200px';
+                    imgElement.style.height = 'auto';
+                    container.appendChild(imgElement);
+                });
+            })
+            .catch(error => console.error('Error fetching images:', error));
+    </script>
+</body>
+</html>
