@@ -1,3 +1,6 @@
+function downloadFile(filePath) {
+    window.location.href = `http://localhost:5000/download-file/${encodeURIComponent(filePath)}`;
+}
 fetch('http://localhost:5000/images')
     .then(response => response.json())
     .then(users => {
